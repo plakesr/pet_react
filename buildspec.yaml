@@ -14,3 +14,7 @@ phases:
         - echo Build started 
         - mvn install
         - packer build -machine-readable ./packer-rest.json
+
+  post_build:
+    commands:
+        - aws codepipeline start-pipeline-execution --name pet-infra
